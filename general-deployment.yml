@@ -16,7 +16,7 @@ spec:
         app: calculator
     spec:
       nodeSelector:
-        node-role.kubernetes.io/worker=worker       #Selects all nodes with this label
+        node-role.kubernetes.io/worker: worker       #Selects all nodes with this label
       containers:
       - name: calculator
         image: chaitannyaa/calculator:latest
