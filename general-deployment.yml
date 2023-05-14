@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-deployment
+  labels:
+    app: calculator
+  namespace: test
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: calculator
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/worker=worker       #Selects all nodes with this label
+      containers:
+      - name: calculator
+        image: chaitannyaa/calculator:latest
+        ports:
+        - containerPort: 80
+      dnsPolicy: ClusterFirst
