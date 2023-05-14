@@ -3,22 +3,22 @@ kind: Deployment
 metadata:
   name: prod-deployment
   labels:
-    app1: mywebapp1
+    app: calculator
   namespace: test
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app1: mywebapp1
+      app: calculator
   template:
     metadata:
       labels:
-        app1: mywebapp1
+        app: calculator
     spec:
       nodeSelector:
         env: production
       containers:
-      - name: mywebapp-ptr
+      - name: calculator-prod
         image: chaitannyaa/calculator:latest
         ports:
         - containerPort: 80
